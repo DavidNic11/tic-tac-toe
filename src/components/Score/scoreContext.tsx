@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useState } from "react";
 
 interface ScoreContext {
   xWins: number;
   oWins: number;
-  addXWin: () => void;
-  addOWin: () => void;
+  addWinX: () => void;
+  addWinO: () => void;
 }
 
 export const ScoreContext = createContext<ScoreContext | null>(null);
@@ -27,13 +27,16 @@ export const StoreContextProvider = ({
   const [xWins, setXWins] = useState(0);
   const [oWins, setOWins] = useState(0);
 
+  const addWinX = useCallback(() => setXWins((old) => old + 1), []);
+  const addWinO = useCallback(() => setOWins((old) => old + 1), []);
+
   return (
     <ScoreContext.Provider
       value={{
         xWins,
         oWins,
-        addXWin: () => setXWins((old) => old + 1),
-        addOWin: () => setOWins((old) => old + 1),
+        addWinX,
+        addWinO,
       }}
     >
       {children}

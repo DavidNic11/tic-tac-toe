@@ -8,8 +8,8 @@ const Score = () => {
   return (
     <div className={styles.scoreContainer}>
       <h2>Number of Wins</h2>
-      <h3 className={styles.scoreText}>X: {xWins}</h3>
-      <h3 className={styles.scoreText}>O: {oWins}</h3>
+      <p className={styles.scoreText}>X: {xWins}</p>
+      <p className={styles.scoreText}>O: {oWins}</p>
     </div>
   );
 };

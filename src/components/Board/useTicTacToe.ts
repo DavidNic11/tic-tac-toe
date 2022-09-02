@@ -9,7 +9,7 @@ import { isGameOver, isWinner } from "../../utilities";
 const createNewTicTacToeBoard = () => Array(9).fill(null);
 
 export const useTicTacToe = () => {
-  const { addXWin, addOWin } = useScore();
+  const { addWinX, addWinO } = useScore();
 
   const [board, setBoard] = useState<BoardSquareValues[]>(
     createNewTicTacToeBoard
@@ -33,9 +33,9 @@ export const useTicTacToe = () => {
     if (isWinner(currentTurn, newBoard)) {
       setWinner(currentTurn);
       if (currentTurn === "X") {
-        addXWin();
+        addWinX();
       } else {
-        addOWin();
+        addWinO();
       }
     }
   };
